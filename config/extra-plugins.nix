@@ -14,6 +14,9 @@
       vim-tmux-navigator = {
         package = vim-tmux-navigator;
       };
+      wakatime = {
+        package = vim-wakatime;
+      };
     };
   };
 }

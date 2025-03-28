@@ -75,6 +75,20 @@ in
       (mkKeymap "n" "k" "gk")
       (mkKeymap "n" "gj" "j")
       (mkKeymap "n" "gk" "k")
+      # remap go to url under cursor
+      (mkKeymapWithOpts "n" "gX"
+        ''
+          function()
+            local url = vim.fn.expand('<cfile>')
+            vim.fn.jobstart({'xdg-open', url}, {detach = true})
+          end
+        ''
+        {
+          desc = "Goto URL";
+          lua = true;
+          silent = true;
+        }
+      )
       # better quickfix navigation
       (mkKeymap "n" "<C-J>" ":cnext<CR>")
       (mkKeymap "n" "<C-K>" ":cprevious<CR>")
