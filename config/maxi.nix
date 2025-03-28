@@ -2,8 +2,12 @@
   lib,
   pkgs,
   maxi ? false,
+  util,
   ...
 }:
+let
+  inherit (util) mkKeymapWithOpts;
+in
 {
   vim = lib.mkIf maxi {
     dashboard = {
@@ -46,23 +50,23 @@
         # Leader
         #TODO: Set <leader>a to not show when the option is available.
         # "<leader>a" = "";
-        "<leader>gc" = "+Conflict";
-        "<leader>gd" = "+Diff";
-        "<leader>gr" = "+Reset";
-        "<leader>gs" = "+Stage";
-        "<leader>gt" = "+Toggle";
-        "<leader>G" = "+Git";
-        "<leader>l" = "+LSP";
-        "<leader>n" = "+Neorg";
-        "<leader>nw" = "+Workspaces";
-        "<leader>o" = "+Oil";
-        "<leader>t" = "+Todo";
+        "<leader>gc" = "[C]onflict";
+        "<leader>gd" = "[D]iff";
+        "<leader>gr" = "[R]eset";
+        "<leader>gs" = "[S]tage";
+        "<leader>gt" = "[T]oggle";
+        "<leader>G" = "[G]it";
+        "<leader>l" = "[L]SP";
+        "<leader>n" = "[N]eorg";
+        "<leader>nw" = "[W]orkspaces";
+        "<leader>o" = "[O]il";
+        "<leader>t" = "[T]odo";
         # Local Leader
-        ",c" = "+Code";
-        ",i" = "+Insert";
-        ",l" = "+List";
-        ",n" = "+Note";
-        ",t" = "+Todo";
+        ",c" = "[C]ode";
+        ",i" = "[I]nsert";
+        ",l" = "[L]ist";
+        ",n" = "[N]ote";
+        ",t" = "[T]odo";
       };
       setupOpts = {
         preset = "helix";
@@ -105,5 +109,12 @@
       surround.enable = true;
     };
     visuals.nvim-web-devicons.enable = true;
+    keymaps = [
+      # sane oil keybind
+      (mkKeymapWithOpts "n" "<leader>o" ":Oil<CR>" { desc = "[O]il"; })
+
+      # # sane window keybind
+      (mkKeymapWithOpts [ "n" "x" ] "<leader>w" "<cmd>:WhichKey<C-W><CR>" { desc = "[W]indow"; })
+    ];
   };
 }

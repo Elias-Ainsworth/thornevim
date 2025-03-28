@@ -11,8 +11,6 @@
   outputs =
     inputs@{
       flake-parts,
-      nixpkgs,
-      self,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -25,16 +23,17 @@
               packages = with pkgs; [
                 nixd
                 nixfmt-rfc-style
+                deadnix
                 statix
+                pre-commit
                 lua-language-server
               ];
             };
           };
           packages = rec {
-            thornevim = pkgs.callPackage ./pkgs/nvf-config.nix { };
+            thornevim = pkgs.callPackage ./pkgs/nvf-config.nix { inherit inputs; };
             default = thornevim;
-            
-            # Override examples
+            maxi = thornevim.override { maxi = true; };
             oxocarbon = thornevim.override { colorscheme = "oxocarbon"; };
             kanagawa = thornevim.override { colorscheme = "kanagawa"; };
             kanagawa-transparent = thornevim.override {
@@ -44,8 +43,8 @@
             transparent = thornevim.override {
               transparency = true;
             };
-            thorneos = thornevim.override { 
-              dots = "/persist/home/elias-ainsworth/projects/dotfiles"; 
+            thorneos = thornevim.override {
+              dots = "/persist/home/elias-ainsworth/projects/dotfiles";
             };
             thorneos-kanagawa = thornevim.override {
               dots = "/persist/home/elias-ainsworth/projects/dotfiles";
@@ -63,6 +62,48 @@
             thorneos-transparent = thornevim.override {
               dots = "/persist/home/elias-ainsworth/projects/dotfiles";
               transparency = true;
+            };
+            oxocarbon-maxi = thornevim.override {
+              colorscheme = "oxocarbon";
+              maxi = true;
+            };
+            kanagawa-maxi = thornevim.override {
+              colorscheme = "kanagawa";
+              maxi = true;
+            };
+            kanagawa-transparent-maxi = thornevim.override {
+              colorscheme = "kanagawa";
+              transparency = true;
+              maxi = true;
+            };
+            transparent-maxi = thornevim.override {
+              transparency = true;
+              maxi = true;
+            };
+            thorneos-maxi = thornevim.override {
+              dots = "/persist/home/elias-ainsworth/projects/dotfiles";
+              maxi = true;
+            };
+            thorneos-kanagawa-maxi = thornevim.override {
+              dots = "/persist/home/elias-ainsworth/projects/dotfiles";
+              maxi = true;
+              colorscheme = "kanagawa";
+            };
+            thorneos-oxocarbon-maxi = thornevim.override {
+              dots = "/persist/home/elias-ainsworth/projects/dotfiles";
+              colorscheme = "oxocarbon";
+              maxi = true;
+            };
+            thorneos-kanagawa-transparent-maxi = thornevim.override {
+              dots = "/persist/home/elias-ainsworth/projects/dotfiles";
+              colorscheme = "kanagawa";
+              transparency = true;
+              maxi = true;
+            };
+            thorneos-transparent-maxi = thornevim.override {
+              dots = "/persist/home/elias-ainsworth/projects/dotfiles";
+              transparency = true;
+              maxi = true;
             };
           };
         };

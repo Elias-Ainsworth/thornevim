@@ -14,6 +14,7 @@ _: {
     ./plugins.nix
     ./theme.nix
   ];
+  _module.args.util = import ./util.nix;
   # todo: misc plugins
   # * supermaven
   # luasnip

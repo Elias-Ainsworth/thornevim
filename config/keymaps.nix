@@ -1,9 +1,6 @@
-_:
+{ util, ... }:
 let
-  mkKeymap = mode: key: action: { inherit mode key action; };
-  mkKeymapWithOpts =
-    mode: key: action: opts:
-    (mkKeymap mode key action) // opts;
+  inherit (util) mkKeymapWithOpts mkKeymap;
 in
 {
   vim = {
@@ -87,56 +84,11 @@ in
         desc = "[P]re-Commit";
       })
 
-      # # sane oil keybind
-      # (mkKeymapWithOpts "n" "<leader>o" ":Oil<CR>" { desc = "+Oil"; })
-
-      # # sane window keybind
-      (mkKeymapWithOpts [ "n" "x" ] "<leader>w" "<cmd>:WhichKey<C-W><CR>" { desc = "[W]indow"; })
-
-      # easier buffer keybind
-      (mkKeymapWithOpts "n" "<leader>bd" ":lua MiniBufremove.delete()<CR>" { desc = "[D]elete Buffer"; })
-      (mkKeymapWithOpts "n" "<leader>bd" ":lua MiniBufremove.unshow_in_window()<CR>" {
-        desc = "[U]nshow Buffer in Window";
-      })
-      (mkKeymapWithOpts "n" "<leader>bu" ":lua MiniBufremove.unshow()<CR>" { desc = "[U]nshow Buffer"; })
-      (mkKeymapWithOpts "n" "<leader>bw" ":lua MiniBufremove.wipeout()<CR>" {
-        desc = "[W]ipeout Buffer";
-      })
-
-      # mini-pick keybinds
-      (mkKeymapWithOpts "n" "<leader>/" ":Pick grep_live<CR>" { desc = "Live Grep"; })
-      (mkKeymapWithOpts "n" "<leader>gC" ":Pick git_commits<CR>" { desc = "[C]ommits"; })
-      (mkKeymapWithOpts "n" "<leader>gb" ":Pick git_branches<CR>" { desc = "[B]ranches"; })
-      (mkKeymapWithOpts "n" "<leader>gf" ":Pick git_files<CR>" { desc = "[F]iles"; })
-      (mkKeymapWithOpts "n" "<leader>gh" ":Pick git_hunks<CR>" { desc = "[H]unks"; })
-      (mkKeymapWithOpts "n" "<leader>le" ":Pick diagnostic<CR>" { desc = "Diagnostic Float"; })
-      (mkKeymapWithOpts "n" "<leader>pH" ":Pick help<CR>" { desc = "[H]elp"; })
-      (mkKeymapWithOpts "n" "<leader>pR" ":Pick resume<CR>" { desc = "[R]esume"; })
-      (mkKeymapWithOpts "n" "<leader>pb" ":Pick buffers cli<CR>" { desc = "[B]uffers"; })
-      (mkKeymapWithOpts "n" "<leader>pc" ":Pick commands<CR>" { desc = "[C]ommands"; })
-      (mkKeymapWithOpts "n" "<leader>pf" ":Pick files<CR>" { desc = "[F]iles"; })
-      (mkKeymapWithOpts "n" "<leader>pg" ":Pick grep<CR>" { desc = "[G]rep"; })
-      (mkKeymapWithOpts "n" "<leader>ph" ":Pick history<CR>" { desc = "[H]istory"; })
-      (mkKeymapWithOpts "n" "<leader>pm" ":Pick marks<CR>" { desc = "[M]arks"; })
-      (mkKeymapWithOpts "n" "<leader>po" ":Pick oldfiles<CR>" { desc = "[O]ldfiles"; })
-      (mkKeymapWithOpts "n" "<leader>pr" ":Pick registers<CR>" { desc = "[R]egisters"; })
-      (mkKeymapWithOpts "n" "<leader>ps" ":Pick spellsuggest<CR>" { desc = "[S]pellsuggest"; })
-      (mkKeymapWithOpts "n" "<leader>pT" ":Pick treesitter<CR>" { desc = "[T]reesitter"; })
-      # (mkKeymapWithOpts "n" "<leader>pt" "${miniPickTodo}" {
-      #   lua = true;
-      #   desc = "[T]odo";
-      # })
-
-      # Files
-      (mkKeymapWithOpts "n" "<leader>f" ":lua MiniFiles.open()<CR>" {
-        desc = "[F]iles";
-      })
-
       # nabla
       (mkKeymapWithOpts "n" "<leader>ll" ":lua require('nabla').popup()<CR>" { desc = "Nabla"; })
 
       # neorg
-      (mkKeymapWithOpts "n" "m" "," { desc = "+Norg"; })
+      (mkKeymapWithOpts "n" "m" "," { desc = "[N]org"; })
       (mkKeymapWithOpts "n" "<C-M-s>" "<Plug>(neorg.qol.todo-items.todo.task-cycle)" {
         desc = "Cycle Task [neorg]";
       })
@@ -163,6 +115,24 @@ in
       (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-l>" "silent !tmux resize-pane -R 5<CR>" {
         silent = true;
         desc = "[R]ight";
+      })
+
+      # Resize windows with Ctrl+Alt+hjkl
+      (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-h>" ":vertical resize -5<CR>" {
+        silent = true;
+        desc = "Resize window left";
+      })
+      (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-j>" ":resize +5<CR>" {
+        silent = true;
+        desc = "Resize window down";
+      })
+      (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-k>" ":resize -5<CR>" {
+        silent = true;
+        desc = "Resize window up";
+      })
+      (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-l>" ":vertical resize +5<CR>" {
+        silent = true;
+        desc = "Resize window right";
       })
     ];
   };

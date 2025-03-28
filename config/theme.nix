@@ -66,9 +66,9 @@ in
   vim = {
     theme = {
       enable = true;
-      transparent = themeConfig.transparent;
-      name = themeConfig.name;
-      style = themeConfig.style;
+      inherit (themeConfig) transparent;
+      inherit (themeConfig) name;
+      inherit (themeConfig) style;
     };
 
     extraPlugins = with pkgs.vimPlugins; {

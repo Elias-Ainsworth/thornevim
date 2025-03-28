@@ -2,29 +2,11 @@
   lib,
   maxi ? false,
   transparency ? false,
+  util,
   ...
 }:
 let
-  mkTrigger = mode: keys: { inherit mode keys; };
-  mkClue = mode: keys: desc: { inherit mode keys desc; };
-  # mkPattern =
-  #   pattern: # lua
-  #   "
-  #   function(buf_id)
-  #       local commentstring = vim.bo[buf_id].commentstring
-  #           if not commentstring or commentstring == '' then
-  #               return nil
-  #           end
-  #           -- Escape special characters in the comment string
-  #           local escaped_commentstring = vim.pesc(commentstring):gsub('%%s', '')
-  #           -- Pattern to match the comment string followed by TODO and optional colon
-  #           return string.format('%s%s:?', escaped_commentstring, '${pattern}')
-  #   end,
-  #   ";
-  # mkHighlighter = pattern: group: {
-  #   inherit group;
-  #   pattern = mkPattern pattern;
-  # };
+  inherit (util) mkClue mkTrigger mkKeymapWithOpts;
 in
 {
   vim = {
@@ -38,12 +20,14 @@ in
         setupOpts = {
           clues = lib.mkForce [
             {
-              miniclue.gen_clues.builtin_completion.enable = true;
-              miniclue.gen_clues.g = true;
-              miniclue.gen_clues.marks = true;
-              miniclue.gen_clues.registers = true;
-              miniclue.gen_clues.windows = true;
-              miniclue.gen_clues.z = true;
+              miniclue.gen_clues.builtin_completion = {
+                enable = true;
+                g = true;
+                marks = true;
+                registers = true;
+                windows = true;
+                z = true;
+              };
             }
             (mkClue "n" "gn" "I[N]it")
 
@@ -79,7 +63,21 @@ in
             (mkClue "n" "<leader>lS" "[S]ymbols")
             (mkClue "n" "<leader>ls" "[S]ignature help")
             (mkClue "n" "<leader>lt" "[T]oggle")
+
             (mkClue "n" "<leader>lw" "[W]orkspace")
+            (mkClue "n" "<leader>wh" { desc = "Move to window left"; })
+            (mkClue "n" "<leader>wj" { desc = "Move to window below"; })
+            (mkClue "n" "<leader>wk" { desc = "Move to window above"; })
+            (mkClue "n" "<leader>wl" { desc = "Move to window right"; })
+            (mkClue "n" "<leader>ws" { desc = "Split window horizontally"; })
+            (mkClue "n" "<leader>wv" { desc = "Split window vertically"; })
+            (mkClue "n" "<leader>wq" { desc = "Close current window"; })
+            (mkClue "n" "<leader>wo" { desc = "Close all other windows"; })
+            (mkClue "n" "<leader>w=" { desc = "Equalize window sizes"; })
+            (mkClue "n" "<leader>w+" { desc = "Increase window height"; })
+            (mkClue "n" "<leader>w-" { desc = "Decrease window height"; })
+            (mkClue "n" "<leader>w>" { desc = "Increase window width"; })
+            (mkClue "n" "<leader>w<" { desc = "Decrease window width"; })
 
             (mkClue "n" "<leader>n" "[N]eorg")
             (mkClue "n" "<leader>nw" "[W]orkpace")
@@ -91,6 +89,8 @@ in
             #TODO: Make this remap.
             # (mkClue "n" "<leader>tt" "[T]rouble")
 
+            (mkClue "n" "<leader>w" "[W]indow")
+
             (mkClue "n" "<leader>x" "Trouble")
             (mkClue "n" "<leader>xl" "[L]OCList")
             (mkClue "n" "<leader>xq" "[Q]uickFix")
@@ -101,11 +101,33 @@ in
             (mkClue "n" "<localleader>l" "[L]ist")
             (mkClue "n" "<localleader>t" "[T]oggle")
             (mkClue "n" "<localleader>n" "[N]ew")
+
+            (mkClue "n" "<C-w>h" { desc = "Move to window left"; })
+            (mkClue "n" "<C-w>j" { desc = "Move to window below"; })
+            (mkClue "n" "<C-w>k" { desc = "Move to window above"; })
+            (mkClue "n" "<C-w>l" { desc = "Move to window right"; })
+
+            (mkClue "n" "<C-w>s" { desc = "Split window horizontally"; })
+            (mkClue "n" "<C-w>v" { desc = "Split window vertically"; })
+
+            (mkClue "n" "<C-w>q" { desc = "Close current window"; })
+            (mkClue "n" "<C-w>o" { desc = "Close all other windows"; })
+
+            (mkClue "n" "<C-w>=" { desc = "Equalize window sizes"; })
+            (mkClue "n" "<C-w>+" { desc = "Increase window height"; })
+            (mkClue "n" "<C-w>-" { desc = "Decrease window height"; })
+            (mkClue "n" "<C-w>>" { desc = "Increase window width"; })
+            (mkClue "n" "<C-w><" { desc = "Decrease window width"; })
+
           ];
           triggers = [
             (mkTrigger "n" "<leader>")
             (mkTrigger "x" "<leader>")
             (mkTrigger "v" "<leader>")
+
+            (mkTrigger "n" "<leader>w")
+            (mkTrigger "x" "<leader>w")
+            (mkTrigger "v" "<leader>w")
 
             (mkTrigger "n" "<localleader>")
             (mkTrigger "x" "<localleader>")
@@ -286,5 +308,59 @@ in
       tabline.enable = true;
       trailspace.enable = true;
     };
+    keymaps = [
+
+      # easier buffer keybind
+      (mkKeymapWithOpts "n" "<leader>bd" ":lua MiniBufremove.delete()<CR>" { desc = "[D]elete Buffer"; })
+      (mkKeymapWithOpts "n" "<leader>bd" ":lua MiniBufremove.unshow_in_window()<CR>" {
+        desc = "[U]nshow Buffer in Window";
+      })
+      (mkKeymapWithOpts "n" "<leader>bu" ":lua MiniBufremove.unshow()<CR>" { desc = "[U]nshow Buffer"; })
+      (mkKeymapWithOpts "n" "<leader>bw" ":lua MiniBufremove.wipeout()<CR>" {
+        desc = "[W]ipeout Buffer";
+      })
+
+      # mini-pick keybinds
+      (mkKeymapWithOpts "n" "<leader>/" ":Pick grep_live<CR>" { desc = "Live Grep"; })
+      (mkKeymapWithOpts "n" "<leader>gC" ":Pick git_commits<CR>" { desc = "[C]ommits"; })
+      (mkKeymapWithOpts "n" "<leader>gb" ":Pick git_branches<CR>" { desc = "[B]ranches"; })
+      (mkKeymapWithOpts "n" "<leader>gf" ":Pick git_files<CR>" { desc = "[F]iles"; })
+      (mkKeymapWithOpts "n" "<leader>gh" ":Pick git_hunks<CR>" { desc = "[H]unks"; })
+      (mkKeymapWithOpts "n" "<leader>le" ":Pick diagnostic<CR>" { desc = "Diagnostic Float"; })
+      (mkKeymapWithOpts "n" "<leader>pH" ":Pick help<CR>" { desc = "[H]elp"; })
+      (mkKeymapWithOpts "n" "<leader>pR" ":Pick resume<CR>" { desc = "[R]esume"; })
+      (mkKeymapWithOpts "n" "<leader>pb" ":Pick buffers cli<CR>" { desc = "[B]uffers"; })
+      (mkKeymapWithOpts "n" "<leader>pc" ":Pick commands<CR>" { desc = "[C]ommands"; })
+      (mkKeymapWithOpts "n" "<leader>pf" ":Pick files<CR>" { desc = "[F]iles"; })
+      (mkKeymapWithOpts "n" "<leader>pg" ":Pick grep<CR>" { desc = "[G]rep"; })
+      (mkKeymapWithOpts "n" "<leader>ph" ":Pick history<CR>" { desc = "[H]istory"; })
+      (mkKeymapWithOpts "n" "<leader>pm" ":Pick marks<CR>" { desc = "[M]arks"; })
+      (mkKeymapWithOpts "n" "<leader>po" ":Pick oldfiles<CR>" { desc = "[O]ldfiles"; })
+      (mkKeymapWithOpts "n" "<leader>pr" ":Pick registers<CR>" { desc = "[R]egisters"; })
+      (mkKeymapWithOpts "n" "<leader>ps" ":Pick spellsuggest<CR>" { desc = "[S]pellsuggest"; })
+      (mkKeymapWithOpts "n" "<leader>pT" ":Pick treesitter<CR>" { desc = "[T]reesitter"; })
+
+      # Files
+      (mkKeymapWithOpts "n" "<leader>f" ":lua MiniFiles.open()<CR>" {
+        desc = "[F]iles";
+      })
+
+      (mkKeymapWithOpts "n" "<leader>wh" "<C-w>h" { desc = "Move to window left"; })
+      (mkKeymapWithOpts "n" "<leader>wj" "<C-w>j" { desc = "Move to window below"; })
+      (mkKeymapWithOpts "n" "<leader>wk" "<C-w>k" { desc = "Move to window above"; })
+      (mkKeymapWithOpts "n" "<leader>wl" "<C-w>l" { desc = "Move to window right"; })
+
+      (mkKeymapWithOpts "n" "<leader>ws" "<C-w>s" { desc = "Split window horizontally"; })
+      (mkKeymapWithOpts "n" "<leader>wv" "<C-w>v" { desc = "Split window vertically"; })
+
+      (mkKeymapWithOpts "n" "<leader>wq" "<C-w>q" { desc = "Close current window"; })
+      (mkKeymapWithOpts "n" "<leader>wo" "<C-w>o" { desc = "Close all other windows"; })
+
+      (mkKeymapWithOpts "n" "<leader>w=" "<C-w>=" { desc = "Equalize window sizes"; })
+      (mkKeymapWithOpts "n" "<leader>w+" "<C-w>+" { desc = "Increase window height"; })
+      (mkKeymapWithOpts "n" "<leader>w-" "<C-w>-" { desc = "Decrease window height"; })
+      (mkKeymapWithOpts "n" "<leader>w>" "<C-w>>" { desc = "Increase window width"; })
+      (mkKeymapWithOpts "n" "<leader>w<" "<C-w><" { desc = "Decrease window width"; })
+    ];
   };
 }

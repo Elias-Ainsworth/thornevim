@@ -1,10 +1,10 @@
 {
   pkgs,
   inputs,
-  colorscheme ? "oxocarbon",
+  colorscheme ? "catppuccin",
   maxi ? false,
   transparency ? false,
-  dots ? "/persist/home/elias-ainsworth/projects/dotfiles",
+  dots ? null,
   outputs ? null,
 }:
 let

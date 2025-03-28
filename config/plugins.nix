@@ -110,6 +110,7 @@
       setupOpts = {
         disabled_filetypes = [
           "ministarter"
+          "startify"
         ];
       };
     };
