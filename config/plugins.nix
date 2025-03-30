@@ -1,6 +1,6 @@
 {
   lib,
-  transparency ? false,
+  transparent,
   ...
 }:
 {
@@ -13,7 +13,7 @@
         previous = "<C-p>";
       };
       setupOpts = {
-        completion.menu.winblend = if transparency then 0 else 100;
+        completion.menu.winblend = if transparent then 0 else 100;
         keymap = {
           preset = "super-tab";
           "<M-space>" = [
@@ -105,13 +105,27 @@
         ];
       };
     };
-    ui.smartcolumn = {
-      enable = true;
-      setupOpts = {
-        disabled_filetypes = [
-          "ministarter"
-          "startify"
-        ];
+    ui = {
+      colorizer = {
+        enable = true;
+        setupOpts = {
+          user_default_options = {
+            RGB = true;
+            RRGGBB = true;
+            RRGGBBAA = true;
+            css = true;
+            tailwind = true;
+          };
+        };
+      };
+      smartcolumn = {
+        enable = true;
+        setupOpts = {
+          disabled_filetypes = [
+            "ministarter"
+            "startify"
+          ];
+        };
       };
     };
   };

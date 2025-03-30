@@ -1,6 +1,7 @@
 {
   lib,
-  dots ? null,
+
+  dots,
   ...
 }:
 {

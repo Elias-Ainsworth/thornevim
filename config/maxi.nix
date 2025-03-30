@@ -1,8 +1,9 @@
 {
   lib,
   pkgs,
-  maxi ? false,
   util,
+
+  maxi,
   ...
 }:
 let
@@ -102,7 +103,6 @@ in
         };
       };
     };
-    ui.colorizer.enable = true;
     utility = {
       motion.leap.enable = true;
       # preview.markdownPreview.enable = true;

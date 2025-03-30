@@ -1,12 +1,18 @@
 {
   lib,
-  maxi ? false,
-  transparency ? false,
   util,
+
+  maxi,
+  transparent,
   ...
 }:
 let
-  inherit (util) mkClue mkTrigger mkKeymapWithOpts;
+  inherit (util)
+    mkClue
+    mkHighlighter
+    mkKeymapWithOpts
+    mkTrigger
+    ;
 in
 {
   vim = {
@@ -64,7 +70,7 @@ in
             (mkClue "n" "<leader>ls" "[S]ignature help")
             (mkClue "n" "<leader>lt" "[T]oggle")
 
-            (mkClue "n" "<leader>lw" "[W]orkspace")
+            (mkClue "n" "<leader>w" "[W]orkspace")
             (mkClue "n" "<leader>wh" { desc = "Move to window left"; })
             (mkClue "n" "<leader>wj" { desc = "Move to window below"; })
             (mkClue "n" "<leader>wk" { desc = "Move to window above"; })
@@ -165,13 +171,13 @@ in
       extra.enable = true;
       files.enable = true;
       hipatterns = {
-        enable = true;
+        enable = false;
         setupOpts = {
           highlighters = {
-            # fixme = mkHighlighter "FIXME" "MiniHipatternsFixme";
-            # hack = mkHighlighter "HACK" "MiniHipatternsHack";
-            # todo = mkHighlighter "TODO" "MiniHipatternsTodo";
-            # note = mkHighlighter "NOTE" "MiniHipatternsNote";
+            fixme = mkHighlighter "FIXME" "MiniHipatternsFixme";
+            hack = mkHighlighter "HACK" "MiniHipatternsHack";
+            todo = mkHighlighter "TODO" "MiniHipatternsTodo";
+            note = mkHighlighter "NOTE" "MiniHipatternsNote";
 
             hex_color = lib.generators.mkLuaInline ''require("mini.hipatterns").gen_highlighter.hex_color()'';
 
@@ -205,7 +211,7 @@ in
       move.enable = true;
       notify = {
         enable = true;
-        setupOpts = lib.mkIf transparency {
+        setupOpts = lib.mkIf transparent {
           window.winblend = 0;
         };
       };

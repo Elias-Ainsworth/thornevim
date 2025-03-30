@@ -1,11 +1,13 @@
 {
-  pkgs,
   inputs,
+  pkgs,
+
   colorscheme ? "catppuccin",
-  maxi ? false,
-  transparency ? false,
   dots ? null,
+  maxi ? false,
   outputs ? null,
+  transparent ? false,
+  variant ? "mocha",
 }:
 let
   neovimConfig = inputs.nvf.lib.neovimConfiguration {
@@ -16,10 +18,11 @@ let
       inputs' = inputs;
       inherit
         colorscheme
-        maxi
-        transparency
         dots
+        maxi
         outputs
+        transparent
+        variant
         ;
     };
   };
