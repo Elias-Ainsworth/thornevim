@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
 
@@ -36,6 +37,11 @@ let
                   LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
                   MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
+
+                  LineNr = { bg = "none" },
+                  LineNrAbove= { bg = "none" },
+                  LineNrBelow= { bg = "none" },
+
                   MiniFilesTitle= { bg = "none" },
                   MiniFilesTitleFocused= { bg = "none" },
 
@@ -68,12 +74,20 @@ let
 in
 {
   vim = {
-    theme = lib.mkIf (!isKanagawa) {
-      enable = true;
-      transparent = themeConfig.transparent;
-      name = themeConfig.name;
-      style = themeConfig.style;
-    };
+    theme =
+      if (!isKanagawa) then
+        {
+          enable = true;
+          transparent = themeConfig.transparent;
+          name = themeConfig.name;
+          style = themeConfig.style;
+        }
+      else
+        {
+          enable = true;
+          transparent = themeConfig.transparent;
+        };
+
     extraPlugins = with pkgs.vimPlugins; {
       kanagawa = lib.mkIf isKanagawa {
         package = kanagawa-nvim;

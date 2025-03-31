@@ -13,6 +13,7 @@
 
       clang.enable = true;
       bash.enable = true;
+      go.enable = true;
       html.enable = true;
       haskell.enable = true;
       lua.enable = true;
@@ -36,6 +37,7 @@
         };
       };
       ocaml.enable = true;
+      odin.enable = true;
       python.enable = true;
       rust = {
         enable = true;
@@ -47,8 +49,15 @@
         extensions.ts-error-translator.enable = true;
         # lsp.server = "denols"; # enable for deno?
       };
+      typst = {
+        enable = true;
+        extensions.typst-preview-nvim.enable = true;
+        format.enable = true;
+        lsp.enable = true;
+        treesitter.enable = true;
+      };
+      zig.enable = true;
     };
-
     lsp = {
       formatOnSave = true;
       # lightbulb.enable = true;
@@ -61,6 +70,9 @@
         goToDefinition = "gd";
       };
     };
-    treesitter.autotagHtml = true;
+    treesitter = {
+      autotagHtml = true;
+      fold = true;
+    };
   };
 }

@@ -2,6 +2,7 @@
   inputs,
   pkgs,
 
+  banner ? "eepy",
   colorscheme ? "catppuccin",
   dots ? null,
   maxi ? false,
@@ -17,6 +18,7 @@ let
       # Inputs is seemingly reserved, though the docs don't show it
       inputs' = inputs;
       inherit
+        banner
         colorscheme
         dots
         maxi
@@ -27,5 +29,6 @@ let
     };
   };
 in
+
 # Explicitly return the neovim package
 neovimConfig.neovim

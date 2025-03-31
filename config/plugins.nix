@@ -1,5 +1,6 @@
 {
   lib,
+
   transparent,
   ...
 }:
@@ -8,14 +9,14 @@
     autocomplete.blink-cmp = {
       enable = true;
       friendly-snippets.enable = true;
-      mappings = {
-        next = "<C-n>";
-        previous = "<C-p>";
-      };
+      # mappings = {
+      #   next = "<C-n>";
+      #   previous = "<C-p>";
+      # };
       setupOpts = {
         completion.menu.winblend = if transparent then 0 else 100;
         keymap = {
-          preset = "super-tab";
+          preset = "none";
           "<M-space>" = [
             "show"
             "show_documentation"
@@ -70,6 +71,8 @@
         };
       };
     };
+    diagnostics.nvim-lint.enable = true;
+    formatter.conform-nvim.enable = true;
     navigation.harpoon = {
       enable = true;
       mappings = {

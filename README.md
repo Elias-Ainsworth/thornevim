@@ -9,6 +9,7 @@ ThorneVim is my personalized configuration of [nvf](https://github.com/NotAShelf
 - Comprehensive support for multiple languages including:
   - C/C++
   - Bash
+  - Go(lang)
   - HTML
   - Haskell
   - Lua
@@ -16,10 +17,13 @@ ThorneVim is my personalized configuration of [nvf](https://github.com/NotAShelf
   - Norg
   - Nix
   - OCaml
+  - Odin
   - Python
   - Rust
   - Tailwind CSS
   - TypeScript
+  - Typst
+  - Zig
 
 ### Appearance
 
@@ -94,7 +98,8 @@ ThorneVim is my personalized configuration of [nvf](https://github.com/NotAShelf
 
 ### Optional Alternatives
 
-The mini plugins can replace these traditional options by setting `maxi` to true via an override:
+The mini plugins can replace these traditional options by setting `maxi` to true
+via an override:
 
 - [Startify](https://github.com/mhinz/vim-startify) → mini.starter
 - [Oil](https://github.com/stevearc/oil.nvim) → mini.files
@@ -146,6 +151,7 @@ Color schemes, their variants and transparency, as well as whether to enable the
 (inputs.thornevim.packages.${pkgs.system}.default.override {
     colorscheme = "gruvbox";
     variant = "dark";
+    maxi = true;
     transparency = true;
 })
 ```
@@ -172,6 +178,11 @@ This is more so for my reference than anything else. But, if you would like to v
 
 Just use `nix develop`
 
+## TO-DO
+
+- [] Oxocarbon with transparency.
+- [] Find a way to pass banner value via string interpolation.
+
 ## Credits
 
 - [@iynaix](https://github.com/iynaix):
@@ -179,9 +190,10 @@ Just use `nix develop`
   - I also ~~stole~~ took inspiration from [iynaix/focal]() for the flake as well as this README.
 
 - [@NotAShelf](https://github.com/NotAShelf)
-  - For providing amazing help, even though my questions would have been answered easily by reading the manual.
-  > [!NOTE]
-  > To future me, from past you. RTFM!!!
+  - For providing amazing help, even though my questions would have been
+    answered easily by reading the manual.
+
+> [!NOTE] To future me, from past you. RTFM!!!
 
 - [@LilleAila](https://github.com/LilleAila):
   - The overall structure of this flake was ~~stolen~~ inspired by [LilleAila/nvf-config]()...what do you expect from me at this point?
@@ -195,4 +207,5 @@ Just use `nix develop`
 
 - [@TeamWolfyta](https://github.com/TeamWolfyta):
   - For taking an interest in this shitty project...and for bugging me to make this README.
+
 
