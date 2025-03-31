@@ -7,66 +7,68 @@ ThorneVim is my personalized configuration of [nvf](https://github.com/NotAShelf
 ### Language Support
 
 - Comprehensive support for multiple languages including:
-  - C/C++
-  - Bash
-  - Go(lang)
-  - HTML
-  - Haskell
-  - Lua
-  - Markdown
-  - Norg
-  - Nix
-  - OCaml
-  - Odin
-  - Python
-  - Rust
-  - Tailwind CSS
-  - TypeScript
-  - Typst
-  - Zig
+- C/C++
+- Bash
+- Go(lang)
+- HTML
+- Haskell
+- Lua
+- Markdown
+- Norg
+- Nix
+- OCaml
+- Odin
+- Python
+- Rust
+- Tailwind CSS
+- TypeScript
+- Typst
+- Zig
 
 ### Appearance
 
-- Multiple [theme](./config/theme.nix) options:
-  - [Catppuccin](https://github.com/catppuccin/nvim) (with transparency option)
-  - [Oxocarbon](https://github.com/nyoom-engineering/oxocarbon.nvim)
-  - [Kanagawa](https://github.com/rebelot/kanagawa.nvim) (with transparency option)
+- Multiple [theme](./config/theme.nix:) options:
+- [Catppuccin](https://github.com/catppuccin/nvim) (with transparency option)
+- [Oxocarbon](https://github.com/nyoom-engineering/oxocarbon.nvim)
+- [Kanagawa](https://github.com/rebelot/kanagawa.nvim) (with transparency option)
 
 - Visual enhancements:
-  - [Smart column](https://github.com/m4xshen/smartcolumn.nvim) guides
-  - [Indent scope](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-indentscope.md) visualization
-  - Icons for file types and Git status
+- [Smart column](https://github.com/m4xshen/smartcolumn.nvim) guides
+- [Indent scope](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-indentscope.md) visualization
+- Icons for file types and Git status
 
 - Color highlighting via [colorizer](https://github.com/norcalli/nvim-colorizer.lua)
 
 ### Development Tools
 
 - [Git](./config/git.nix) integration:
-  - [Vim Fugitive](https://github.com/tpope/vim-fugitive)
-  - Custom Pre-Commit function
+- [Vim Fugitive](https://github.com/tpope/vim-fugitive)
+- Custom Pre-Commit function
 
 - Intelligent code completion:
-  - [Blink.cmp](https://github.com/Saghen/blink.cmp) with snippet support
+- [Blink.cmp](https://github.com/Saghen/blink.cmp) with snippet support
 
 - Project management:
-  - [Project-nvim](https://github.com/ahmedkhalf/project.nvim/) for project navigation
-  - [Rooter](https://github.com/airblade/vim-rooter/) for automatic project root detection
-  - [Direnv](https://github.com/direnv/direnv.vim/) integration
+- [Project-nvim](https://github.com/ahmedkhalf/project.nvim/) for project navigation
+- [Rooter](https://github.com/airblade/vim-rooter/) for automatic project root detection
+- [Direnv](https://github.com/direnv/direnv.vim/) integration
+
 
 ### Navigation and Editing
 
-- Ergonomic file navigation with [Harpoon2](https://github.com/ThePrimeagen/harpoon)
+- Ergonomic file navigation with
+  [Harpoon2](https://github.com/ThePrimeagen/harpoon)
 
 - [Mini.nvim](https://github.com/echasnovski/mini.nvim) suite providing:
-  - Efficient text manipulation (ai, move, operators)
-  - Smart brackets and pairs handling
-  - Advanced jumping capabilities (jump, jump2d)
-  - Code splitting and joining
-  - Intuitive surround operations
+- Efficient text manipulation (ai, move, operators)
+- Smart brackets and pairs handling
+- Advanced jumping capabilities (jump, jump2d)
+- Code splitting and joining
+- Intuitive surround operations
 
 - [Tmux integration](https://github.com/christoomey/vim-tmux-navigator):
-  - Seamless navigation between panes
-  - Window resizing via custom keymaps
+- Seamless navigation between panes
+- Window resizing via custom keymaps
 
 ### Productivity
 
@@ -99,8 +101,7 @@ ThorneVim is my personalized configuration of [nvf](https://github.com/NotAShelf
 ### Optional Alternatives
 
 The mini plugins can replace these traditional options by setting `maxi` to true
-via an override:
-
+  via an override:
 - [Startify](https://github.com/mhinz/vim-startify) → mini.starter
 - [Oil](https://github.com/stevearc/oil.nvim) → mini.files
 - [Autopairs](https://github.com/windwp/nvim-autopairs) → mini.pairs
@@ -117,9 +118,9 @@ via an override:
 ### Custom Wrappers
 
 - Simplified declaration for:
-  - Keymaps (with and without options)
-  - Clues and triggers for mini-clue
-  - Patterns and highlights for mini-hipatterns
+- Keymaps (with and without options)
+- Clues and triggers for mini-clue
+- Patterns and highlights for mini-hipatterns
 
 ## Installation
 
@@ -129,7 +130,7 @@ Include the following input in your `flake.nix` file:
 
 ```nix
 {
-    inputs.thornevim.url = "github:Elias-Ainsworth/thornevim";
+inputs.thornevim.url = "github:Elias-Ainsworth/thornevim";
 }
 ```
 
@@ -158,13 +159,14 @@ Color schemes, their variants and transparency, as well as whether to enable the
 
 ### Legacy *NIX based operating systems
 
-[Install home-manager](https://nix-community.github.io/home-manager/)
-
-Then go back to the section on [NixOS](#nixos) and follow those steps.
+1. [Install home-manager](https://nix-community.github.io/home-manager/)
+2. Then go back to the section on [NixOS](#nixos) and follow those steps.
 
 ## Configuration
 
-For options on configuring nvf itself, checkout the [manual](https://notashelf.github.io/nvf/), and for specific options the [configuration options](https://notashelf.github.io/nvf/options.html) section.
+For options on configuring nvf itself, checkout the
+[manual](https://notashelf.github.io/nvf/), and for specific options the
+[configuration options](https://notashelf.github.io/nvf/options.html) section.
 
 ## Usage
 
@@ -180,32 +182,30 @@ Just use `nix develop`
 
 ## TO-DO
 
-- [] Oxocarbon with transparency.
-- [] Find a way to pass banner value via string interpolation.
+- [ ] Oxocarbon with transparency.
+- [ ] Find a way to pass banner value via string interpolation.
 
 ## Credits
 
 - [@iynaix](https://github.com/iynaix):
-  - This nvf config started with [neovim-iynaix]()...unsurprisingly.
-  - I also ~~stole~~ took inspiration from [iynaix/focal]() for the flake as well as this README.
+- This nvf config started with [neovim-iynaix](https://github.com/iynaix/dotfiles/tree/main/packages/neovim-iynaix)...unsurprisingly.
+- I also ~~stole~~ took inspiration from [iynaix/focal](https://github.com/iynaix/focal) for the flake as well as this README.
 
 - [@NotAShelf](https://github.com/NotAShelf)
-  - For providing amazing help, even though my questions would have been
-    answered easily by reading the manual.
+- For providing amazing help, even though my questions would have been answered easily by reading the manual.
 
 > [!NOTE] To future me, from past you. RTFM!!!
 
 - [@LilleAila](https://github.com/LilleAila):
-  - The overall structure of this flake was ~~stolen~~ inspired by [LilleAila/nvf-config]()...what do you expect from me at this point?
-  - Further thanks for the extra help regarding configuring nvf's mini.nvim modules.
+- The overall structure of this flake was ~~stolen~~ inspired by [LilleAila/nvf-config](https://github.com/LilleAila/nvf-config)...what do you expect from me at this point?
+- Further thanks for the extra help regarding configuring nvf's mini.nvim modules.
 
 - [@justchokingaround](https://github.com/justchokingaround):
-  - For convincing me to use mini.nvim and for providing me his mini configuration for me to ~~steal~~ take inspiration from.
+- For convincing me to use mini.nvim and for providing me his mini configuration for me to ~~steal~~ take inspiration from.
 
 - [@LuminarLeaf](https://github.com/LuminarLeaf):
-  - For helping me with a stupid mistake with my flake (I did not include `inherit inputs;` in my [package call](./flake.nix#L39)). It was literally two words and a semi-colon but I would have spent a millennia trying to fix it to no avail.
+- For helping me with a stupid mistake with my flake [package call](I did not include `inherit inputs;` in my {./flake.nix:39)}. It was literally two words and a semi-colon but I would have spent a millennia trying to fix it to no avail.
 
 - [@TeamWolfyta](https://github.com/TeamWolfyta):
-  - For taking an interest in this shitty project...and for bugging me to make this README.
-
+- For taking an interest in this shitty project...and for bugging me to make this README.
 

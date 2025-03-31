@@ -1,7 +1,7 @@
 {
   lib,
 
-  transparent,
+  # transparent,
   ...
 }:
 {
@@ -14,7 +14,7 @@
       #   previous = "<C-p>";
       # };
       setupOpts = {
-        completion.menu.winblend = if transparent then 0 else 100;
+        # completion.menu.winblend = if transparent then 100 else 0;
         keymap = {
           preset = "none";
           "<M-space>" = [
@@ -71,8 +71,6 @@
         };
       };
     };
-    diagnostics.nvim-lint.enable = true;
-    formatter.conform-nvim.enable = true;
     navigation.harpoon = {
       enable = true;
       mappings = {

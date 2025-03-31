@@ -20,6 +20,9 @@
       markdown = {
         enable = true;
         extensions.render-markdown-nvim.enable = true;
+        format.enable = true;
+        lsp.enable = true;
+        treesitter.enable = true;
       };
       nix = {
         enable = true;
@@ -42,6 +45,9 @@
       rust = {
         enable = true;
         crates.enable = true;
+        dap.enable = true;
+        lsp.enable = true;
+        treesitter.enable = true;
       };
       tailwind.enable = true;
       ts = {

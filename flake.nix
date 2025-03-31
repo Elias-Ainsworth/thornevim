@@ -77,6 +77,17 @@
               variant = "dark";
               maxi = true;
             };
+            oxocarbon-maxi-transparent = thornevim.override {
+              colorscheme = "oxocarbon";
+              transparent = true;
+              variant = "dark";
+              maxi = true;
+            };
+            oxocarbon-transparent = thornevim.override {
+              colorscheme = "oxocarbon";
+              variant = "dark";
+              transparent = true;
+            };
             # ThorneOS
             thorneos = thornevim.override { dots = "/persist/home/elias-ainsworth/projects/dotfiles"; };
             thorneos-kanagawa = thornevim.override {

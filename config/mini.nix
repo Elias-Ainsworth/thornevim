@@ -1,8 +1,6 @@
 {
   lib,
   util,
-
-  banner,
   maxi,
   transparent,
   ...
@@ -205,8 +203,7 @@ in
       jump2d = {
         enable = true;
         setupOpts = {
-          mappings.start_jumping = "<CR>";
-
+          mappings.start_jumping = "m";
         };
       };
       move.enable = true;
