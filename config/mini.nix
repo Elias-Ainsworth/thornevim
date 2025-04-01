@@ -161,7 +161,7 @@ in
             (mkTrigger "c" "<C-R>")
             (mkTrigger "i" "<C-R>")
           ];
-          window.delay = 100;
+          window.delay = 10;
         };
       };
       comment.enable = true;
@@ -273,6 +273,7 @@ in
         desc = "[F]iles";
       })
 
+      (mkKeymapWithOpts "n" "<leader>w" "<C-w>" { desc = "[W]indow"; })
       (mkKeymapWithOpts "n" "<leader>wh" "<C-w>h" { desc = "Move to window left"; })
       (mkKeymapWithOpts "n" "<leader>wj" "<C-w>j" { desc = "Move to window below"; })
       (mkKeymapWithOpts "n" "<leader>wk" "<C-w>k" { desc = "Move to window above"; })

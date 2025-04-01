@@ -18,7 +18,7 @@ in
         enable = true;
         changeToVCRoot = true;
         customHeader = builtins.filter (s: s != [ ]) (
-          builtins.split "\n" (builtins.readFile ../ascii/eepy.txt)
+          builtins.split "\n" (builtins.readFile ../ascii/elias.txt)
         );
       };
     };

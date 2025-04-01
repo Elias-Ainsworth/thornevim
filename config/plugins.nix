@@ -71,6 +71,7 @@
         };
       };
     };
+    formatter.conform-nvim.enable = true;
     navigation.harpoon = {
       enable = true;
       mappings = {
