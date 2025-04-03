@@ -1,7 +1,5 @@
 {
   lib,
-
-  # transparent,
   ...
 }:
 {
@@ -107,6 +105,35 @@
         ];
       };
     };
+    statusline.lualine = {
+      enable = true;
+      setupOpts = {
+        options = {
+          icons_enabled = true;
+          theme = "auto";
+          disabled_filetypes = {
+            statusline = [ "ministarter" ];
+            winbar = [ "ministarter" ];
+          };
+          ignore_focus = { };
+          always_divide_middle = true;
+          always_show_tabline = true;
+          globalstatus = false;
+          refresh = {
+            statusline = 100;
+            tabline = 100;
+            winbar = 100;
+          };
+        };
+      };
+    };
+    tabline.nvimBufferline = {
+      enable = true;
+      setupOpts.options = {
+        numbers = "none";
+        show_close_icon = false;
+      };
+    };
     ui = {
       colorizer = {
         enable = true;
@@ -116,6 +143,7 @@
             RRGGBB = true;
             RRGGBBAA = true;
             css = true;
+            names = false;
             tailwind = true;
           };
         };
@@ -123,12 +151,11 @@
       smartcolumn = {
         enable = true;
         setupOpts = {
-          disabled_filetypes = [
-            "ministarter"
-            "startify"
-          ];
+          disabled_filetypes = [ "ministarter" ];
         };
       };
     };
+    utility.preview.markdownPreview.enable = true;
+    visuals.nvim-web-devicons.enable = true;
   };
 }

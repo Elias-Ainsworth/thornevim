@@ -197,7 +197,6 @@ in
           };
         };
       };
-      icons.enable = true;
       indentscope.enable = true;
       jump.enable = true;
       jump2d = {
@@ -231,12 +230,10 @@ in
         };
 
       };
-      statusline.enable = true;
       surround.enable = true;
-      tabline.enable = true;
       trailspace.enable = true;
     };
-    keymaps = [
+    keymaps = lib.mkIf (!maxi) [
 
       # easier buffer keybind
       (mkKeymapWithOpts "n" "<leader>bd" ":lua MiniBufremove.delete()<CR>" { desc = "[D]elete Buffer"; })
