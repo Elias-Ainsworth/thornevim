@@ -89,6 +89,9 @@
         quickFix = "<leader>tq";
       };
     };
+    presence.neocord = {
+      enable = true;
+    };
     projects.project-nvim = {
       enable = true;
       setupOpts = {
