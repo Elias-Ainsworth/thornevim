@@ -6,7 +6,6 @@
   vim = {
     autocomplete.blink-cmp = {
       enable = true;
-      cmdline.enable = true;
       friendly-snippets.enable = true;
       mappings = {
         next = "<C-n>";
