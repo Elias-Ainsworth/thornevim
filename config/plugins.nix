@@ -35,6 +35,9 @@ _: {
     };
     presence.neocord = {
       enable = true;
+      setupOpts = {
+        logo = "../pkgs/nvf.svg";
+      };
     };
     projects.project-nvim = {
       enable = true;
