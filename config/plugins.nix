@@ -81,7 +81,7 @@
       starter = {
         enable = true;
         setupOpts = {
-          header = builtins.readFile ../ascii/elias.txt;
+          header = builtins.readFile ../assets/ascii/elias.txt;
           # footer = "#[derive(Dumb)]";
           footer = ''
             「僕はエリアス・エインズワースかもしれないが、
@@ -114,7 +114,7 @@
     presence.neocord = {
       enable = true;
       setupOpts = {
-        logo = "https://raw.githubusercontent.com/Elias-Ainsworth/thornevim/refs/heads/main/pkgs/nvf.svg";
+        logo = "https://raw.githubusercontent.com/Elias-Ainsworth/thornevim/refs/heads/main/assets/icons/nvf.png";
       };
     };
     projects.project-nvim = {
