@@ -82,6 +82,8 @@ in
         (mkKeymap "n" "k" "gk")
         (mkKeymap "n" "gj" "j")
         (mkKeymap "n" "gk" "k")
+        # I don't want constant fucking highlighting it's driving me nuts!
+        (mkKeymap "n" "<M-Esc>" ":nohlsearch<CR>")
         # remap go to url under cursor
         (mkKeymapWithOpts "n" "gX"
           ''

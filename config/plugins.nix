@@ -15,8 +15,11 @@
       };
       setupOpts = {
         keymap.preset = "enter";
-        cmdline.keymap.preset = "enter";
-        completion.list.selection.preselect = false;
+        cmdline.keymap.preset = "default";
+        completion = {
+          list.selection.preselect = false;
+          menu.auto_show = true;
+        };
       };
     };
     binds.whichKey = {
@@ -25,16 +28,19 @@
         # Leader
         #TODO: Set <leader>a to not show when the option is available.
         # "<leader>a" = "";
+        "<leader>G" = "[G]it";
+        "<leader>b" = "[B]uffer";
+        "<leader>g" = "[G]itsigns";
         "<leader>gc" = "[C]onflict";
         "<leader>gd" = "[D]iff";
         "<leader>gr" = "[R]eset";
         "<leader>gs" = "[S]tage";
         "<leader>gt" = "[T]oggle";
-        "<leader>G" = "[G]it";
         "<leader>l" = "[L]SP";
         "<leader>n" = "[N]eorg";
         "<leader>nw" = "[W]orkspaces";
         "<leader>o" = "[O]il";
+        "<leader>p" = "[P]ick";
         "<leader>t" = "[T]odo";
         # Local Leader
         ",c" = "[C]ode";
@@ -160,7 +166,7 @@
       enable = true;
       setupOpts.options = {
         numbers = "none";
-        show_close_icon = false;
+        show_close_icon = true;
       };
     };
     telescope = {
