@@ -114,7 +114,7 @@
     presence.neocord = {
       enable = true;
       setupOpts = {
-        logo = "https://github.com/Elias-Ainsworth/thornevim/blob/main/assets/icons/nvf.png";
+        logo = "https://raw.githubusercontent.com/Elias-Ainsworth/thornevim/refs/heads/main/assets/icons/nvf.png";
       };
     };
     projects.project-nvim = {
