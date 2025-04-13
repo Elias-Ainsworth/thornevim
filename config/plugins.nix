@@ -166,7 +166,7 @@
       enable = true;
       setupOpts.options = {
         numbers = "none";
-        show_close_icon = true;
+        show_close_icon = false;
       };
     };
     telescope = {
