@@ -46,10 +46,28 @@
               transparent = true;
               maxi = true;
             };
-            gruvbox = thornevim.override {
-              colorscheme = "gruvbox";
-              variant = "dark";
+            oh-lucy = thornevim.override {
+              colorscheme = "oh-lucy";
             };
+            minimal = thornevim.override {
+              colorscheme = "minimal";
+            };
+            aquarium = thornevim.override {
+              colorscheme = "aquarium";
+              transparent = true;
+            };
+            ashen = thornevim.override {
+              colorscheme = "ashen";
+            };
+            tokyodark = thornevim.override {
+              colorscheme = "tokyodark";
+              transparent = true;
+            };
+
+            paradise = thornevim.override {
+              colorscheme = "paradise";
+            };
+
             # Kanagawa
             kanagawa = thornevim.override {
               colorscheme = "kanagawa";
