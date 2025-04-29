@@ -64,6 +64,27 @@
               transparent = true;
             };
 
+            tokyonight = thornevim.override {
+              colorscheme = "tokyonight";
+              variant = "night";
+              transparent = true;
+            };
+
+            rose-pine = thornevim.override {
+              colorscheme = "rose-pine";
+              variant = "main";
+              transparent = true;
+            };
+            gruvbox = thornevim.override {
+              colorscheme = "gruvbox";
+              variant = "dark";
+              transparent = true;
+            };
+            everforest = thornevim.override {
+              colorscheme = "everforest";
+              variant = "dark";
+              transparent = true;
+            };
             paradise = thornevim.override {
               colorscheme = "paradise";
             };
