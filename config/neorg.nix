@@ -10,18 +10,15 @@ _: {
             "core.defaults".enable = true;
 
             "core.completion" = {
-              enable = true;
               config.engine = "nvim-cmp";
             };
             "core.concealer" = {
-              enable = true;
               config = {
                 folds = true;
                 init_open_folds = "auto";
               };
             };
             "core.dirman" = {
-              enable = true;
               config = {
                 workspaces = {
                   notes = "~/projects/notes";
@@ -37,16 +34,13 @@ _: {
               update_date = true;
             };
             "core.export" = {
-              enable = true;
               config.export_dir = "${builtins.getEnv "PWD"}";
             };
             "core.export.markdown" = {
-              enable = true;
               config.extensions = "all";
             };
             # "core.integrations.image".enable = false;
             # "core.latex.renderer" = {
-            #   enable = false;
             #   config = {
             #     conceal = true;
             #     render_on_enter = true;
@@ -54,7 +48,6 @@ _: {
             #   };
             # };
             "core.presenter" = {
-              enable = true;
               config.zen_mode = "zen-mode";
             };
             "core.summary".enable = true;
@@ -62,6 +55,7 @@ _: {
         };
       };
     };
+
     # utility = {
     #   images.image-nvim = {
     #     enable = false;

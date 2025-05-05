@@ -6,9 +6,9 @@
 }:
 {
   vim = {
+    lsp.enable = true;
     languages = {
       enableFormat = true;
-      enableLSP = true;
       enableTreesitter = true;
 
       clang.enable = true;
