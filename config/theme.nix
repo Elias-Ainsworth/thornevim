@@ -15,6 +15,7 @@ let
   isAquarium = colorscheme == "aquarium";
   isAshen = colorscheme == "ashen";
   isParadise = colorscheme == "paradise";
+  isEverforest = colorscheme == "everforest";
   themeConfig = {
     name = if isParadise then "base16" else colorscheme;
     style = variant;
@@ -101,18 +102,30 @@ let
 in
 {
   vim = {
-    theme = lib.mkIf (!isKanagawa && !isTokyodark && !isLucy && !isMinimal && !isAquarium && !isAshen) {
-      enable = true;
-      transparent = themeConfig.transparent;
-      name = themeConfig.name;
-      style = themeConfig.style;
-      base16-colors = lib.mkIf (isParadise) base16Paradise;
-    };
+    theme =
+      lib.mkIf
+        (!isKanagawa && !isTokyodark && !isLucy && !isMinimal && !isAquarium && !isAshen && !isEverforest)
+        {
+          enable = true;
+          transparent = themeConfig.transparent;
+          name = themeConfig.name;
+          style = themeConfig.style;
+          base16-colors = lib.mkIf (isParadise) base16Paradise;
+        };
 
     extraPlugins = with pkgs; {
       kanagawa = lib.mkIf isKanagawa {
         package = vimPlugins.kanagawa-nvim;
         setup = if transparent then kanagawaTransparent else kanagawaNonTransparent;
+      };
+      everforest = lib.mkIf isEverforest {
+        package = vimPlugins.everforest;
+        setup =
+          if transparent then # lua
+            ''''
+          # lua
+          else
+            ''vim.cmd("colorscheme everforest")'';
       };
       oh-lucy = lib.mkIf isLucy {
         package = pkgs.vimUtils.buildVimPlugin {

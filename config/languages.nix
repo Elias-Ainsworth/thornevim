@@ -6,7 +6,6 @@
 }:
 {
   vim = {
-    lsp.enable = true;
     languages = {
       enableFormat = true;
       enableTreesitter = true;
@@ -65,6 +64,7 @@
       zig.enable = true;
     };
     lsp = {
+      enable = true;
       formatOnSave = true;
       # lightbulb.enable = true;
       lspkind.enable = true;
