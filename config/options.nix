@@ -21,10 +21,13 @@ _: {
 
     # misc meta settings
     lazy.enable = true;
+    clipboard = {
+      enable = true;
+      registers = "unnamedplus";
+    };
     lineNumberMode = "relNumber";
     preventJunkFiles = true;
     searchCase = "smart";
-    useSystemClipboard = true;
 
     spellcheck = {
       enable = true;
