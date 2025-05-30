@@ -2,7 +2,7 @@ _: {
   vim = {
     notes = {
       neorg = {
-        enable = true;
+        enable = false;
         #BUG: Summary module doesn't work due to lack of norg-meta parser.
         treesitter.enable = true;
         setupOpts = {
