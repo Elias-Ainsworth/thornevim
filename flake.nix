@@ -7,6 +7,7 @@
     };
     systems.url = "github:nix-systems/default-linux";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
   };
   outputs =
     inputs@{
@@ -35,11 +36,7 @@
           };
           packages = rec {
             default = thornevim;
-            thornevim = pkgs.callPackage ./pkgs/nvf-config.nix { inherit inputs; };
-            everforest = thornevim.override {
-              colorscheme = "everforest";
-              transparent = true;
-            };
+            thornevim = pkgs.callPackage ./package.nix { inherit inputs; };
           };
         };
     };

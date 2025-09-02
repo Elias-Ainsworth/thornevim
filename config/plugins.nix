@@ -1,6 +1,5 @@
 {
   lib,
-  maxi,
   transparent,
   ...
 }:
@@ -25,52 +24,29 @@
     binds.whichKey = {
       enable = true;
       register = {
-        # Leader
-        #TODO: Set <leader>a to not show when the option is available.
-        # "<leader>a" = "";
-        "<leader>G" = "[G]it";
-        "<leader>b" = "[B]uffer";
-        "<leader>g" = "[G]itsigns";
-        "<leader>gc" = "[C]onflict";
-        "<leader>gd" = "[D]iff";
-        "<leader>gr" = "[R]eset";
-        "<leader>gs" = "[S]tage";
-        "<leader>gt" = "[T]oggle";
-        "<leader>l" = "[L]SP";
-        "<leader>n" = "[N]eorg";
-        "<leader>nw" = "[W]orkspaces";
-        "<leader>o" = "[O]il";
-        "<leader>p" = "[P]ick";
-        "<leader>t" = "[T]odo";
-        # Local Leader
-        ",c" = "[C]ode";
-        ",i" = "[I]nsert";
-        ",l" = "[L]ist";
-        ",n" = "[N]ote";
-        ",t" = "[T]odo";
+        "<leader>c" = "Choose [Gitsigns]";
+        "<leader>g" = "Git";
+        "<leader>l" = "Lsp";
+        "<leader>lg" = "Go-to";
+        "<leader>lt" = "Toggle";
+        "<leader>lw" = "Workspace";
+        # "<leader>o" = "Oil";
+        "<leader>t" = "Toggle [Gitsigns]";
       };
       setupOpts = {
         preset = "helix";
       };
     };
     formatter.conform-nvim.enable = true;
-    mini = lib.mkIf (!maxi) {
+    mini = {
       ai.enable = true;
       bracketed.enable = true;
       bufremove.enable = true;
       comment.enable = true;
-      #TODO: Currently unavailable in nvf.
-      # cursorword.enable = true;
       extra.enable = true;
-      files.enable = true;
+      files.enable = false;
       indentscope.enable = true;
       jump.enable = true;
-      jump2d = {
-        enable = true;
-        setupOpts = {
-          mappings.start_jumping = "m";
-        };
-      };
       move.enable = true;
       notify = {
         enable = true;
@@ -80,14 +56,11 @@
       };
       operators.enable = true;
       pairs.enable = true;
-
-      #TODO: Make a picker to search through todo-comments.
-      pick.enable = true;
       splitjoin.enable = true;
       starter = {
         enable = true;
         setupOpts = {
-          header = builtins.readFile ../assets/ascii/elias.txt;
+          header = builtins.readFile ../assets/ascii/neovim.txt;
           # footer = "#[derive(Dumb)]";
           footer = ''
             「僕はエリアス・エインズワースかもしれないが、
@@ -98,45 +71,16 @@
       surround.enable = true;
       trailspace.enable = true;
     };
-    navigation.harpoon = {
-      enable = true;
-      mappings = {
-        file1 = "<M-n>";
-        file2 = "<M-e>";
-        file3 = "<M-i>";
-        file4 = "<M-o>";
-        listMarks = "<M-t>";
-        markFile = "<M-s>";
-      };
-    };
     notes.todo-comments = {
       enable = true;
       mappings = {
-        telescope = "<leader>tt";
-        trouble = "<leader>tr";
-        quickFix = "<leader>tq";
+        telescope = "<leader>fc";
       };
     };
     presence.neocord = {
       enable = true;
       setupOpts = {
         logo = "https://raw.githubusercontent.com/Elias-Ainsworth/thornevim/refs/heads/main/assets/icons/nvf.png";
-      };
-    };
-    projects.project-nvim = {
-      enable = true;
-      setupOpts = {
-        detection_methods = [
-          "lsp"
-          "pattern"
-        ];
-        patterns = [
-          "=.envrc"
-          "=flake.nix"
-          "=.norg"
-          ">projects/"
-          ">playground/"
-        ];
       };
     };
     snippets.luasnip.enable = true;
@@ -162,20 +106,11 @@
         };
       };
     };
-    tabline.nvimBufferline = {
-      enable = true;
-      setupOpts.options = {
-        numbers = "none";
-        show_close_icon = false;
-      };
-    };
     telescope = {
-      enable = maxi;
+      enable = true;
       mappings = {
         buffers = "<leader>fb";
         findFiles = "<leader>ff";
-        gitBranches = "<leader>gb";
-        gitStatus = "<leader>gT";
         liveGrep = "<leader>/";
       };
       setupOpts = {

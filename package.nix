@@ -2,26 +2,23 @@
   inputs,
   pkgs,
 
-  banner ? "eepy",
-  colorscheme ? "catppuccin",
+  colorscheme ? "oxocarbon",
   dots ? null,
-  maxi ? false,
   outputs ? null,
   transparent ? false,
-  variant ? "mocha",
+  variant ? "dark",
 }:
 let
   neovimConfig = inputs.nvf.lib.neovimConfiguration {
     inherit pkgs;
-    modules = [ (import ../config) ];
+    modules = [ (inputs.import-tree ../config) ];
     extraSpecialArgs = {
       # Inputs is seemingly reserved, though the docs don't show it
       inputs' = inputs;
+      libCustom = import ./lib.nix;
       inherit
-        banner
         colorscheme
         dots
-        maxi
         outputs
         transparent
         variant
