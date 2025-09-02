@@ -31,7 +31,8 @@ _: {
 
     spellcheck = {
       enable = true;
-      programmingWordlist.enable = true;
+      ignoredFiletypes = [ "ministarter" ];
+      languages = [ "en" ];
     };
   };
 }
