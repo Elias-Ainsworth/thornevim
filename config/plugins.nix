@@ -30,7 +30,7 @@
         "<leader>lg" = "Go-to";
         "<leader>lt" = "Toggle";
         "<leader>lw" = "Workspace";
-        # "<leader>o" = "Oil";
+        "<leader>o" = "Oil";
         "<leader>t" = "Toggle [Gitsigns]";
       };
       setupOpts = {
@@ -65,6 +65,18 @@
           footer = ''
             「僕はエリアス・エインズワースかもしれないが、
                       チセがいない――つまり、僕は完全に『チセレス』だ。」'';
+
+          # Add content hooks for concrete selection
+          content_hooks = [
+            # Add indexing with letters/numbers for direct selection
+            (lib.generators.mkLuaInline ''
+              require('mini.starter').gen_hook.indexing('all', {})
+            '')
+            # Center the content both horizontally and vertically
+            (lib.generators.mkLuaInline ''
+              require('mini.starter').gen_hook.aligning('center', 'center')
+            '')
+          ];
         };
 
       };
@@ -131,7 +143,19 @@
         };
       };
     };
-    utility.preview.markdownPreview.enable = true;
+    utility = {
+      direnv.enable = true;
+      oil-nvim = {
+        enable = true;
+        setupOpts = {
+          keymaps = {
+            "H" = "actions.parent";
+            "L" = "actions.select";
+          };
+        };
+      };
+      preview.markdownPreview.enable = true;
+    };
     visuals.nvim-web-devicons.enable = true;
   };
 }

@@ -104,22 +104,22 @@ in
       })
 
       # sane tmux resize-pane keybinds
-      # (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-h>" "silent !tmux resize-pane -L 5<CR>" {
-      #   silent = true;
-      #   desc = "[L]eft";
-      # })
-      # (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-j>" "silent !tmux resize-pane -D 5<CR>" {
-      #   silent = true;
-      #   desc = "[D]own";
-      # })
-      # (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-k>" "silent !tmux resize-pane -U 5<CR>" {
-      #   silent = true;
-      #   desc = "[U]p";
-      # })
-      # (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-l>" "silent !tmux resize-pane -R 5<CR>" {
-      #   silent = true;
-      #   desc = "[R]ight";
-      # })
+      (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-h>" "silent !tmux resize-pane -L 5<CR>" {
+        silent = true;
+        desc = "Left";
+      })
+      (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-j>" "silent !tmux resize-pane -D 5<CR>" {
+        silent = true;
+        desc = "Down";
+      })
+      (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-k>" "silent !tmux resize-pane -U 5<CR>" {
+        silent = true;
+        desc = "Up";
+      })
+      (mkKeymapWithOpts [ "i" "n" "v" "x" ] "<C-M-l>" "silent !tmux resize-pane -R 5<CR>" {
+        silent = true;
+        desc = "Right";
+      })
 
       # # sane window keybind
       # (mkKeymapWithOpts [ "n" "x" ] "<leader>w" "<cmd>:WhichKey<C-W><CR>" { desc = "[W]indow"; })
@@ -142,13 +142,8 @@ in
       #   desc = "Resize window right";
       # })
 
-      # mini-files
-      # (mkKeymapWithOpts "n" "<leader>f" ":lua MiniFiles.open()<CR>" {
-      #   desc = "Files";
-      # })
-
       # oil.nvim
-      # (mkKeymapWithOpts "n" "<leader>o" ":Oil<CR>" { desc = "Oil"; })
+      (mkKeymapWithOpts "n" "<leader>o" ":Oil<CR>" { desc = "Oil"; })
     ];
   };
 }
